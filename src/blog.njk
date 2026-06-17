@@ -1,0 +1,37 @@
+---
+layout: base.njk
+title: Блог
+description: "Блог психолога Олександра Каплуна: статті про тривогу, стосунки, вигорання, адаптацію за кордоном і поєднання роботи з психікою та тілом."
+permalink: /blog.html
+---
+<section class="blog-hero">
+  <div class="container">
+    <p class="eyebrow">Блог</p>
+    <h1 class="blog-hero__title">Думки про психіку, тіло та рівновагу</h1>
+    <p class="blog-hero__lead">
+      Тут я ділюся роздумами й практичними порадами про тривогу, стосунки,
+      вигорання, адаптацію за кордоном і про те, як повертати собі опору.
+    </p>
+  </div>
+</section>
+
+<section class="section" style="padding-top:24px">
+  <div class="container">
+    {% if collections.posts.length %}
+    <div class="posts">
+      {% for post in collections.posts %}
+      <a class="post-card reveal" href="{{ post.url }}">
+        <div class="post-card__body">
+          <span class="post-card__meta">{{ post.data.category }}</span>
+          <h2>{{ post.data.title }}</h2>
+          {% if post.data.excerpt %}<p>{{ post.data.excerpt }}</p>{% endif %}
+          <span class="post-card__link">Читати →</span>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="placeholder-box">Статті незабаром.</div>
+    {% endif %}
+  </div>
+</section>

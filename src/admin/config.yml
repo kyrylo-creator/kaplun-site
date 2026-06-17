@@ -1,0 +1,35 @@
+# ===========================================================
+#  Decap CMS — конфігурація
+# ===========================================================
+
+backend:
+  name: github
+  repo: kyrylo-creator/kaplun-site
+  branch: main
+
+# Мова інтерфейсу та редактора
+locale: "uk"
+
+# Куди завантажуються картинки зі статей
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+
+# Для локального тесту (npx decap-server) розкоментуй:
+# local_backend: true
+
+collections:
+  - name: "posts"
+    label: "Статті блогу"
+    label_singular: "Стаття"
+    folder: "src/posts"
+    create: true
+    slug: "{{slug}}"
+    summary: "{{title}}"
+    sortable_fields: ["date", "title"]
+    fields:
+      - { label: "Заголовок", name: "title", widget: "string" }
+      - { label: "Дата", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Категорія / підзаголовок", name: "category", widget: "string", hint: "напр. «Тривога · 5 хв читання»" }
+      - { label: "Короткий опис (для картки та SEO)", name: "excerpt", widget: "text" }
+      - { label: "Опис для пошуковиків (необов'язково)", name: "description", widget: "text", required: false }
+      - { label: "Текст статті", name: "body", widget: "markdown" }

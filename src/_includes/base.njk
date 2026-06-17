@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>{{ title }} — Олександр Каплун</title>
+  <meta name="description" content="{{ description or excerpt }}" />
+
+  <meta property="og:type" content="{{ ogType or 'website' }}" />
+  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:title" content="{{ title }}" />
+  <meta property="og:description" content="{{ description or excerpt }}" />
+  <meta property="og:image" content="/assets/photo.JPG" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+
+  <header class="nav">
+    <div class="container nav__inner">
+      <a href="/index.html#top" class="brand">
+        <span class="brand__mark">ОК</span>
+        <span>Олександр Каплун</span>
+      </a>
+      <nav class="nav__links" id="navLinks">
+        <a href="/index.html#about">Про мене</a>
+        <a href="/index.html#services">Послуги</a>
+        <a href="/index.html#approach">Підхід</a>
+        <a href="/blog.html">Блог</a>
+        <a href="/index.html#contacts" class="nav__cta">Записатися</a>
+      </nav>
+      <button class="nav__toggle" id="navToggle" aria-label="Меню">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  {{ content | safe }}
+
+  <footer class="footer">
+    <div class="container footer__inner">
+      <div>
+        <div class="footer__name">Олександр Каплун</div>
+        <small>Психолог-консультант · Killarney, Ірландія</small>
+      </div>
+      <div class="footer__links">
+        <a href="/blog.html">Блог</a>
+        <a href="/index.html#contacts">Записатися</a>
+      </div>
+    </div>
+    <div class="container" style="margin-top:24px;color:#b9c4ad;font-size:.82rem">
+      © <span id="year"></span> Олександр Каплун. Усі права захищені.
+    </div>
+  </footer>
+
+  <script src="/script.js"></script>
+</body>
+</html>

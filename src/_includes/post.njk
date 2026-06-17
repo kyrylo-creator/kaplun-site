@@ -1,0 +1,23 @@
+---
+layout: base.njk
+ogType: article
+---
+<article class="article">
+  <div class="container container--narrow">
+    <a href="/blog.html" class="article__back">← До всіх статей</a>
+
+    <p class="article__meta">
+      {{ category }}{% if date %} · {{ date | dateUk }}{% endif %}
+    </p>
+    <h1 class="article__title">{{ title }}</h1>
+
+    {% if excerpt %}<p class="article__lead">{{ excerpt }}</p>{% endif %}
+
+    {{ content | safe }}
+
+    <div class="article__cta">
+      <p>Хочете обговорити це особисто?</p>
+      <a href="/index.html#contacts" class="btn btn--primary">Записатися на сесію</a>
+    </div>
+  </div>
+</article>
