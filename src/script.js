@@ -49,6 +49,28 @@ document.addEventListener('DOMContentLoaded', function () {
   var status = document.getElementById('formStatus');
 
   if (form) {
+    // Локалізація повідомлень за станом форми (мова береться з прихованого поля lang)
+    var FORM_MESSAGES = {
+      uk: {
+        sending: 'Надсилаю…',
+        success: 'Дякую! Повідомлення надіслано — я відповім якнайшвидше.',
+        error:   'Не вдалося надіслати. Спробуйте ще раз або напишіть напряму нижче.'
+      },
+      en: {
+        sending: 'Sending…',
+        success: 'Thank you! Your message has been sent — I will reply as soon as possible.',
+        error:   'Could not send the message. Please try again or contact me directly below.'
+      },
+      ru: {
+        sending: 'Отправляю…',
+        success: 'Спасибо! Сообщение отправлено — отвечу как можно скорее.',
+        error:   'Не удалось отправить. Попробуйте ещё раз или напишите напрямую ниже.'
+      }
+    };
+    var langInput = form.querySelector('input[name="lang"]');
+    var formLang = (langInput && langInput.value) || document.documentElement.lang || 'uk';
+    var msg = FORM_MESSAGES[formLang] || FORM_MESSAGES.uk;
+
     // Заповнюємо приховані трекінг-поля з URL/referrer (для аналітики джерел)
     var qs = new URLSearchParams(window.location.search);
     var trackingMap = {
@@ -70,7 +92,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
       var btn = form.querySelector('.form-submit');
       if (btn) { btn.disabled = true; }
-      if (status) { status.className = 'form-status'; status.textContent = 'Надсилаю…'; }
+      if (status) { status.className = 'form-status'; status.textContent = msg.sending; }
 
       var data = new FormData(form);
       var encoded = new URLSearchParams(data).toString();
@@ -85,13 +107,13 @@ document.addEventListener('DOMContentLoaded', function () {
         form.reset();
         if (status) {
           status.className = 'form-status is-success';
-          status.textContent = 'Дякую! Повідомлення надіслано — я відповім якнайшвидше.';
+          status.textContent = msg.success;
         }
       })
       .catch(function () {
         if (status) {
           status.className = 'form-status is-error';
-          status.textContent = 'Не вдалося надіслати. Спробуйте ще раз або напишіть напряму нижче.';
+          status.textContent = msg.error;
         }
       })
       .finally(function () {
