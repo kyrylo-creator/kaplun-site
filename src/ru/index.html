@@ -32,6 +32,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sashkopsy.com/#person",
+        "name": "Александр Каплун",
+        "url": "https://sashkopsy.com/ru/",
+        "image": "https://sashkopsy.com/assets/photo.JPG",
+        "jobTitle": "Психолог-консультант",
+        "description": "Психолог-консультант. Метод позитивной и транскультуральной психотерапии. Онлайн из любой точки мира и лично в Килларни, Ирландия.",
+        "telephone": "+353834347952",
+        "sameAs": [
+          "https://www.instagram.com/sashkopsy",
+          "https://www.youtube.com/@SashkoPsy",
+          "https://t.me/sashkopsy"
+        ],
+        "memberOf": [
+          { "@type": "Organization", "name": "Союз психологов Ирландии (PSI)" },
+          { "@type": "Organization", "name": "World Association for Positive and Transcultural Psychotherapy" }
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Харьковский национальный университет имени В. Н. Каразина"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://sashkopsy.com/#service",
+        "name": "Александр Каплун — психолог-консультант",
+        "url": "https://sashkopsy.com/ru/",
+        "image": "https://sashkopsy.com/assets/photo.JPG",
+        "telephone": "+353834347952",
+        "provider": { "@id": "https://sashkopsy.com/#person" },
+        "areaServed": ["Онлайн из любой точки", "Killarney"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Killarney",
+          "addressCountry": "IE"
+        },
+        "priceRange": "€50",
+        "availableLanguage": ["ru", "en", "uk"]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

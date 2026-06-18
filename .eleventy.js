@@ -4,6 +4,7 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy({ "src/styles.css": "styles.css" });
   eleventyConfig.addPassthroughCopy({ "src/script.js": "script.js" });
   eleventyConfig.addPassthroughCopy({ "src/admin": "admin" });
+  eleventyConfig.addPassthroughCopy({ "src/robots.txt": "robots.txt" });
 
   // Дата у форматі ДД.ММ.РРРР (українською)
   eleventyConfig.addFilter("dateUk", function (value) {
@@ -11,6 +12,14 @@ module.exports = function (eleventyConfig) {
     const d = new Date(value);
     if (isNaN(d)) return "";
     return d.toLocaleDateString("uk-UA", { day: "2-digit", month: "2-digit", year: "numeric" });
+  });
+
+  // ISO-дата для sitemap (YYYY-MM-DD)
+  eleventyConfig.addFilter("dateISO", function (value) {
+    if (!value) return "";
+    const d = new Date(value);
+    if (isNaN(d)) return "";
+    return d.toISOString().split("T")[0];
   });
 
   // Колекція статей (за тегом "post"), новіші — першими

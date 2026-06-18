@@ -35,6 +35,54 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Person",
+        "@id": "https://sashkopsy.com/#person",
+        "name": "Олександр Каплун",
+        "url": "https://sashkopsy.com/uk/",
+        "image": "https://sashkopsy.com/assets/photo.JPG",
+        "jobTitle": "Психолог-консультант",
+        "description": "Психолог-консультант. Метод позитивної та транскультуральної психотерапії. Онлайн з будь-якої точки світу та особисто в Killarney, Ірландія.",
+        "telephone": "+353834347952",
+        "sameAs": [
+          "https://www.instagram.com/sashkopsy",
+          "https://www.youtube.com/@SashkoPsy",
+          "https://t.me/sashkopsy"
+        ],
+        "memberOf": [
+          { "@type": "Organization", "name": "Спілка психологів Ірландії (PSI)" },
+          { "@type": "Organization", "name": "World Association for Positive and Transcultural Psychotherapy" }
+        ],
+        "alumniOf": {
+          "@type": "CollegeOrUniversity",
+          "name": "Харківський національний університет імені В. Н. Каразіна"
+        }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://sashkopsy.com/#service",
+        "name": "Олександр Каплун — психолог-консультант",
+        "url": "https://sashkopsy.com/uk/",
+        "image": "https://sashkopsy.com/assets/photo.JPG",
+        "telephone": "+353834347952",
+        "provider": { "@id": "https://sashkopsy.com/#person" },
+        "areaServed": ["Онлайн з будь-якої точки", "Killarney"],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Killarney",
+          "addressCountry": "IE"
+        },
+        "priceRange": "€50",
+        "availableLanguage": ["uk", "en", "ru"]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 

@@ -6,17 +6,50 @@
 
   <title>{{ title }} — Олександр Каплун</title>
   <meta name="description" content="{{ description or excerpt }}" />
+  <link rel="canonical" href="https://sashkopsy.com{{ page.url }}" />
 
   <meta property="og:type" content="{{ ogType or 'website' }}" />
   <meta property="og:locale" content="uk_UA" />
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ description or excerpt }}" />
-  <meta property="og:image" content="/assets/photo.JPG" />
+  <meta property="og:url" content="https://sashkopsy.com{{ page.url }}" />
+  <meta property="og:image" content="https://sashkopsy.com/assets/photo.JPG" />
+
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="{{ title }}" />
+  <meta name="twitter:description" content="{{ description or excerpt }}" />
+  <meta name="twitter:image" content="https://sashkopsy.com/assets/photo.JPG" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="/styles.css" />
+
+  {% if ogType == "article" %}
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": "{{ title }}",
+    "description": "{{ description or excerpt }}",
+    "image": "https://sashkopsy.com/assets/photo.JPG",
+    "datePublished": "{{ date | dateISO }}",
+    "dateModified": "{{ date | dateISO }}",
+    "inLanguage": "uk",
+    "author": {
+      "@type": "Person",
+      "name": "Олександр Каплун",
+      "url": "https://sashkopsy.com/uk/"
+    },
+    "publisher": {
+      "@type": "Person",
+      "name": "Олександр Каплун",
+      "url": "https://sashkopsy.com/uk/"
+    },
+    "mainEntityOfPage": "https://sashkopsy.com{{ page.url }}"
+  }
+  </script>
+  {% endif %}
 </head>
 <body>
 

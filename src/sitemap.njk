@@ -1,0 +1,54 @@
+---
+permalink: /sitemap.xml
+eleventyExcludeFromCollections: true
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+
+  <url>
+    <loc>https://sashkopsy.com/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sashkopsy.com/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sashkopsy.com/uk/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sashkopsy.com/ru/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://sashkopsy.com/" />
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+  </url>
+
+  <url>
+    <loc>https://sashkopsy.com/uk/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sashkopsy.com/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sashkopsy.com/uk/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sashkopsy.com/ru/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sashkopsy.com/ru/</loc>
+    <xhtml:link rel="alternate" hreflang="en" href="https://sashkopsy.com/" />
+    <xhtml:link rel="alternate" hreflang="uk" href="https://sashkopsy.com/uk/" />
+    <xhtml:link rel="alternate" hreflang="ru" href="https://sashkopsy.com/ru/" />
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+
+  <url>
+    <loc>https://sashkopsy.com/blog.html</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
+  {%- for post in collections.posts %}
+  <url>
+    <loc>https://sashkopsy.com{{ post.url }}</loc>
+    {%- if post.date %}
+    <lastmod>{{ post.date | dateISO }}</lastmod>
+    {%- endif %}
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  {%- endfor %}
+
+</urlset>
