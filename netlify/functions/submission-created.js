@@ -3,6 +3,8 @@
 // Налаштування — через env-змінні TELEGRAM_BOT_TOKEN і TELEGRAM_CHAT_ID
 // (Netlify → Site configuration → Environment variables).
 
+const LANG_NAMES = { uk: "Українська", en: "English", ru: "Русский" };
+
 exports.handler = async (event) => {
   let body;
   try {
@@ -15,8 +17,6 @@ exports.handler = async (event) => {
   const data = payload.data || {};
   const formName = payload.form_name || "contact";
 
-  // Цю функцію викликає кожна форма сайту. Поки в нас лише "contact",
-  // але якщо колись додасться інша — не плутаємо.
   if (formName !== "contact") {
     return { statusCode: 200, body: "skipped" };
   }
@@ -33,12 +33,32 @@ exports.handler = async (event) => {
     { timeZone: "Europe/Dublin" }
   );
 
+  // Збираємо інфу про джерело трафіку
+  const lang = LANG_NAMES[data.lang] || data.lang || "—";
+  const sourceLines = [];
+  if (data.page_url) sourceLines.push(`Сторінка: ${data.page_url}`);
+  if (data.referrer && data.referrer !== "direct") {
+    sourceLines.push(`Звідки: ${data.referrer}`);
+  } else if (data.referrer === "direct") {
+    sourceLines.push("Звідки: пряме відвідування");
+  }
+  const utmFields = ["utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term"];
+  const utmPresent = utmFields.filter((k) => data[k]);
+  if (utmPresent.length) {
+    sourceLines.push(
+      "UTM: " + utmPresent.map((k) => `${k.replace("utm_", "")}=${data[k]}`).join(" · ")
+    );
+  }
+
   const text = [
     "🆕 Новий запит з сайту",
     "",
     `Імʼя: ${data.name || "—"}`,
     `Телефон: ${data.phone || "—"}`,
     `Повідомлення: ${data.message || "—"}`,
+    "",
+    `Мова форми: ${lang}`,
+    ...sourceLines,
     "",
     `Час: ${time}`,
   ].join("\n");

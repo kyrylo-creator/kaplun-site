@@ -49,6 +49,22 @@ document.addEventListener('DOMContentLoaded', function () {
   var status = document.getElementById('formStatus');
 
   if (form) {
+    // Заповнюємо приховані трекінг-поля з URL/referrer (для аналітики джерел)
+    var qs = new URLSearchParams(window.location.search);
+    var trackingMap = {
+      page_url: window.location.href,
+      referrer: document.referrer || 'direct',
+      utm_source: qs.get('utm_source') || '',
+      utm_medium: qs.get('utm_medium') || '',
+      utm_campaign: qs.get('utm_campaign') || '',
+      utm_content: qs.get('utm_content') || '',
+      utm_term: qs.get('utm_term') || ''
+    };
+    Object.keys(trackingMap).forEach(function (k) {
+      var f = form.querySelector('input[name="' + k + '"]');
+      if (f) f.value = trackingMap[k];
+    });
+
     form.addEventListener('submit', function (e) {
       e.preventDefault();
 

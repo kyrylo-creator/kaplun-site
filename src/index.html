@@ -51,8 +51,12 @@
         <a href="#about">Про мене</a>
         <a href="#services">Послуги</a>
         <a href="#approach">Підхід</a>
-        <a href="#reviews">Відгуки</a>
         <a href="#contacts" class="nav__cta">Записатися</a>
+        <span class="lang-switch">
+          <a class="lang-switch__cur" href="/">UK</a>
+          <a href="/en/">EN</a>
+          <a href="/ru/">RU</a>
+        </span>
       </nav>
       <button class="nav__toggle" id="navToggle" aria-label="Меню">
         <span></span><span></span><span></span>
@@ -352,18 +356,15 @@
     </div>
   </section>
 
-  <!-- ====================== ВІДГУКИ ====================== -->
+  <!-- ====================== ВІДГУКИ (приховано до появи реальних) ======================
   <section class="section section--alt" id="reviews">
     <div class="container">
       <p class="eyebrow">Відгуки</p>
       <h2 class="section-title">Що кажуть клієнти</h2>
-
-      <div class="placeholder-box reveal">
-        Тут зʼявляться відгуки клієнтів. Надішліть 2–4 коротких відгуки
-        (можна анонімних) — і я оформлю їх картками.
-      </div>
+      <div class="placeholder-box reveal">…</div>
     </div>
   </section>
+  ====================== /ВІДГУКИ ====================== -->
 
   <!-- ====================== КОНТАКТИ ====================== -->
   <section class="section" id="contacts">
@@ -382,12 +383,21 @@
             class="contact-form"
             id="contactForm"
           >
-            <!-- Потрібно Netlify для розпізнавання форми -->
+            <!-- Netlify розпізнає форму за цим полем -->
             <input type="hidden" name="form-name" value="contact" />
-            <!-- Пастка для ботів (приховано від людей) -->
+            <!-- Honeypot (приховано від людей) -->
             <p class="hp-field">
               <label>Не заповнюйте це поле: <input name="bot-field" /></label>
             </p>
+            <!-- Трекінг джерела (заповнюється script.js) -->
+            <input type="hidden" name="lang" value="uk" />
+            <input type="hidden" name="page_url" value="" />
+            <input type="hidden" name="referrer" value="" />
+            <input type="hidden" name="utm_source" value="" />
+            <input type="hidden" name="utm_medium" value="" />
+            <input type="hidden" name="utm_campaign" value="" />
+            <input type="hidden" name="utm_content" value="" />
+            <input type="hidden" name="utm_term" value="" />
 
             <div class="field">
               <label for="name">Ім'я <span class="req">*</span></label>
@@ -403,11 +413,6 @@
               <label for="message">Повідомлення</label>
               <textarea id="message" name="message" rows="5" placeholder="Коротко опишіть, із чим хотіли б звернутися (необов'язково)"></textarea>
             </div>
-
-            <label class="consent">
-              <input type="checkbox" name="consent" required />
-              <span>Погоджуюся на обробку моїх даних для відповіді на звернення.</span>
-            </label>
 
             <button type="submit" class="btn btn--primary form-submit">
               Надіслати

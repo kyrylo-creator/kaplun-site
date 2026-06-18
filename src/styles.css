@@ -98,6 +98,12 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; mar
 .nav__toggle { display: none; background: none; border: 0; cursor: pointer; padding: 6px; }
 .nav__toggle span { display: block; width: 24px; height: 2px; background: var(--ink); margin: 5px 0; transition: .3s; }
 
+/* Перемикач мов у навігації */
+.lang-switch { display: inline-flex; gap: 4px; align-items: center; margin-left: 8px; font-size: .8rem; }
+.lang-switch a { padding: 4px 8px; border-radius: 6px; color: #87917f; font-weight: 600; letter-spacing: .03em; }
+.lang-switch a:hover { color: var(--forest); background: rgba(0,0,0,.04); }
+.lang-switch__cur { color: var(--forest) !important; background: rgba(76,99,80,.08); }
+
 /* --------------------- Hero --------------------- */
 .hero { padding: 72px 0 64px; }
 .hero__grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 56px; align-items: center; }
