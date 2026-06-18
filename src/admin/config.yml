@@ -24,9 +24,8 @@ collections:
     folder: "src/posts"
     create: true
     slug: "{{slug}}"
-    summary: "{{title}}"
-    sortable_fields: ["date", "title"]
     summary: "[{{lang}}] {{title}}"
+    sortable_fields: ["date", "title"]
     fields:
       - label: "Мова статті"
         name: "lang"
