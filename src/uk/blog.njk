@@ -1,11 +1,11 @@
 ---
-lang: en
+lang: uk
 layout: base.njk
-title: Blog
-description: "Notes on anxiety, relationships, burnout, adapting abroad and finding grounding again, by Oleksandr Kaplun."
-permalink: /blog/
+title: Блог
+description: "Думки про тривогу, стосунки, вигорання, адаптацію за кордоном і поєднання роботи з психікою та тілом — Олександр Каплун."
+permalink: /uk/blog/
 ---
-{%- set L = lang or "en" -%}
+{%- set L = lang or "uk" -%}
 {%- set t = i18n[L] -%}
 <section class="blog-hero">
   <div class="container">
@@ -17,9 +17,9 @@ permalink: /blog/
 
 <section class="section" style="padding-top:24px">
   <div class="container">
-    {% if collections.posts_en.length %}
+    {% if collections.posts_uk.length %}
     <div class="posts">
-      {% for post in collections.posts_en %}
+      {% for post in collections.posts_uk %}
       <a class="post-card reveal" href="{{ post.url }}">
         <div class="post-card__body">
           <span class="post-card__meta">{{ post.data.category }}</span>

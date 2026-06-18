@@ -2,9 +2,11 @@
 layout: base.njk
 ogType: article
 ---
+{%- set L = lang or "uk" -%}
+{%- set t = i18n[L] -%}
 <article class="article">
   <div class="container container--narrow">
-    <a href="/blog.html" class="article__back">← До всіх статей</a>
+    <a href="{{ t.blogUrl }}" class="article__back">{{ t.post.back }}</a>
 
     <p class="article__meta">
       {{ category }}{% if date %} · {{ date | dateUk }}{% endif %}
@@ -16,8 +18,8 @@ ogType: article
     {{ content | safe }}
 
     <div class="article__cta">
-      <p>Хочете обговорити це особисто?</p>
-      <a href="/index.html#contacts" class="btn btn--primary">Записатися на сесію</a>
+      <p>{{ t.post.ctaQuestion }}</p>
+      <a href="{{ t.contactsUrl }}" class="btn btn--primary">{{ t.post.ctaButton }}</a>
     </div>
   </div>
 </article>

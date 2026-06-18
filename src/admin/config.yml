@@ -26,10 +26,20 @@ collections:
     slug: "{{slug}}"
     summary: "{{title}}"
     sortable_fields: ["date", "title"]
+    summary: "[{{lang}}] {{title}}"
     fields:
+      - label: "Мова статті"
+        name: "lang"
+        widget: "select"
+        default: "uk"
+        hint: "Стаття з'явиться у блозі обраної мови. Для перекладу — створи нову статтю іншою мовою."
+        options:
+          - { label: "Українська", value: "uk" }
+          - { label: "English",    value: "en" }
+          - { label: "Русский",    value: "ru" }
       - { label: "Заголовок", name: "title", widget: "string" }
       - { label: "Дата", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false, format: "YYYY-MM-DD" }
-      - { label: "Категорія / підзаголовок", name: "category", widget: "string", hint: "напр. «Тривога · 5 хв читання»" }
+      - { label: "Категорія / підзаголовок", name: "category", widget: "string", hint: "напр. «Тривога · 5 хв читання» або «Anxiety · 5 min read»" }
       - { label: "Короткий опис (для картки та SEO)", name: "excerpt", widget: "text" }
       - { label: "Опис для пошуковиків (необов'язково)", name: "description", widget: "text", required: false }
       - { label: "Текст статті", name: "body", widget: "markdown" }

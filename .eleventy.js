@@ -27,6 +27,16 @@ module.exports = function (eleventyConfig) {
     return collectionApi.getFilteredByTag("post").reverse();
   });
 
+  // Окремі колекції за мовою — для трьох blog-індексів
+  ["uk", "en", "ru"].forEach(function (lang) {
+    eleventyConfig.addCollection("posts_" + lang, function (api) {
+      return api
+        .getFilteredByTag("post")
+        .filter(function (p) { return (p.data.lang || "uk") === lang; })
+        .reverse();
+    });
+  });
+
   return {
     dir: {
       input: "src",

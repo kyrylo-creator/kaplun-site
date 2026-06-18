@@ -1,17 +1,19 @@
+{%- set L = lang or "uk" -%}
+{%- set t = i18n[L] -%}
 <!DOCTYPE html>
-<html lang="uk">
+<html lang="{{ t.htmlLang }}">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <title>{{ title }} — Олександр Каплун</title>
+  <title>{{ title }} — {{ t.post.siteSuffix }}</title>
   <meta name="description" content="{{ description or excerpt }}" />
   <link rel="canonical" href="https://sashkopsy.com{{ page.url }}" />
   <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
   <meta name="theme-color" content="#3d5a40" />
 
   <meta property="og:type" content="{{ ogType or 'website' }}" />
-  <meta property="og:locale" content="uk_UA" />
+  <meta property="og:locale" content="{{ t.ogLocale }}" />
   <meta property="og:title" content="{{ title }}" />
   <meta property="og:description" content="{{ description or excerpt }}" />
   <meta property="og:url" content="https://sashkopsy.com{{ page.url }}" />
@@ -37,16 +39,16 @@
     "image": "https://sashkopsy.com/assets/photo.JPG",
     "datePublished": "{{ date | dateISO }}",
     "dateModified": "{{ date | dateISO }}",
-    "inLanguage": "uk",
+    "inLanguage": "{{ t.htmlLang }}",
     "author": {
       "@type": "Person",
-      "name": "Олександр Каплун",
-      "url": "https://sashkopsy.com/uk/"
+      "name": "{{ t.footer.brand }}",
+      "url": "https://sashkopsy.com{{ t.homeUrl }}"
     },
     "publisher": {
       "@type": "Person",
-      "name": "Олександр Каплун",
-      "url": "https://sashkopsy.com/uk/"
+      "name": "{{ t.footer.brand }}",
+      "url": "https://sashkopsy.com{{ t.homeUrl }}"
     },
     "mainEntityOfPage": "https://sashkopsy.com{{ page.url }}"
   }
@@ -57,23 +59,23 @@
 
   <header class="nav">
     <div class="container nav__inner">
-      <a href="/uk/#top" class="brand">
+      <a href="{{ t.homeUrl }}#top" class="brand">
         <svg class="brand__mark" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><path d="M 81 28 A 38 38 0 1 1 60 13" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round"/></svg>
-        <span>Олександр Каплун</span>
+        <span>{{ t.footer.brand }}</span>
       </a>
       <nav class="nav__links" id="navLinks">
-        <a href="/uk/#about">Про мене</a>
-        <a href="/uk/#services">Послуги</a>
-        <a href="/uk/#approach">Підхід</a>
-        <a href="/blog.html">Блог</a>
-        <a href="/uk/#contacts" class="nav__cta">Записатися</a>
+        <a href="{{ t.homeUrl }}#about">{{ t.nav.about }}</a>
+        <a href="{{ t.homeUrl }}#services">{{ t.nav.services }}</a>
+        <a href="{{ t.homeUrl }}#approach">{{ t.nav.approach }}</a>
+        <a href="{{ t.blogUrl }}">{{ t.nav.blog }}</a>
+        <a href="{{ t.contactsUrl }}" class="nav__cta">{{ t.nav.book }}</a>
         <span class="lang-switch">
-          <a class="lang-switch__cur" href="/uk/">UK</a>
-          <a href="/">EN</a>
-          <a href="/ru/">RU</a>
+          <a {% if L == "uk" %}class="lang-switch__cur"{% endif %} href="/uk/">UK</a>
+          <a {% if L == "en" %}class="lang-switch__cur"{% endif %} href="/">EN</a>
+          <a {% if L == "ru" %}class="lang-switch__cur"{% endif %} href="/ru/">RU</a>
         </span>
       </nav>
-      <button class="nav__toggle" id="navToggle" aria-label="Меню">
+      <button class="nav__toggle" id="navToggle" aria-label="Menu">
         <span></span><span></span><span></span>
       </button>
     </div>
@@ -84,16 +86,16 @@
   <footer class="footer">
     <div class="container footer__inner">
       <div>
-        <div class="footer__name">Олександр Каплун</div>
-        <small>Психолог-консультант · Killarney, Ірландія</small>
+        <div class="footer__name">{{ t.footer.brand }}</div>
+        <small>{{ t.footer.role }}</small>
       </div>
       <div class="footer__links">
-        <a href="/blog.html">Блог</a>
-        <a href="/uk/#contacts">Записатися</a>
+        <a href="{{ t.blogUrl }}">{{ t.nav.blog }}</a>
+        <a href="{{ t.contactsUrl }}">{{ t.nav.book }}</a>
       </div>
     </div>
     <div class="container" style="margin-top:24px;color:#b9c4ad;font-size:.82rem">
-      © <span id="year"></span> Олександр Каплун. Усі права захищені.
+      © <span id="year"></span> {{ t.footer.brand }}. {{ t.footer.rights }}
     </div>
   </footer>
 
