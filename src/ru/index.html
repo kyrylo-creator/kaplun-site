@@ -110,6 +110,8 @@
     </div>
   </header>
 
+  <main>
+
   <section class="hero container" id="top">
     <div class="hero__grid">
       <div class="hero__text reveal">
@@ -141,7 +143,10 @@
       </div>
 
       <div class="hero__photo reveal">
-        <img src="/assets/photo.JPG" alt="Александр Каплун, психолог-консультант" />
+        <picture>
+          <source type="image/webp" srcset="/assets/photo-600.webp 600w, /assets/photo.webp 1000w" sizes="(max-width: 700px) 90vw, 500px" />
+          <img src="/assets/photo.JPG" alt="Александр Каплун, психолог-консультант" width="900" height="1600" fetchpriority="high" />
+        </picture>
       </div>
     </div>
   </section>
@@ -164,7 +169,10 @@
       <p class="eyebrow">Видео</p>
       <h2 class="section-title">Несколько слов от меня</h2>
       <div class="video__frame reveal">
-        <iframe src="https://www.youtube.com/embed/bIPg-MlOSLQ" title="Видео — Александр Каплун" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+        <button type="button" class="lite-yt" data-id="bIPg-MlOSLQ" data-title="Видео — Александр Каплун" aria-label="Воспроизвести видео">
+          <img class="lite-yt__poster" src="https://i.ytimg.com/vi/bIPg-MlOSLQ/hqdefault.jpg" alt="" loading="lazy" width="480" height="360" />
+          <span class="lite-yt__play"></span>
+        </button>
       </div>
     </div>
   </section>
@@ -474,6 +482,8 @@
     </div>
   </section>
 
+  </main>
+
   <footer class="footer" id="footer">
     <div class="container footer__inner">
       <div>
@@ -485,7 +495,7 @@
         <a href="#contacts">Записаться</a>
       </div>
     </div>
-    <div class="container" style="margin-top:24px;color:#b9c4ad;font-size:.82rem">
+    <div class="container" style="margin-top:24px;color:#d8e0cf;font-size:.82rem">
       © <span id="year"></span> Александр Каплун. Все права защищены.
     </div>
   </footer>

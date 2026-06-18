@@ -122,6 +122,22 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* --- Лайт-YouTube: клік замінює превʼю на реальний iframe --- */
+  document.querySelectorAll('.lite-yt').forEach(function (el) {
+    el.addEventListener('click', function () {
+      var id = el.getAttribute('data-id');
+      if (!id) return;
+      var iframe = document.createElement('iframe');
+      iframe.src = 'https://www.youtube.com/embed/' + id + '?autoplay=1&rel=0';
+      iframe.title = el.getAttribute('data-title') || 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share';
+      iframe.allowFullscreen = true;
+      iframe.loading = 'eager';
+      el.innerHTML = '';
+      el.appendChild(iframe);
+    }, { once: true });
+  });
+
   /* --- Лайтбокс для дипломів --- */
   var lightbox = document.getElementById('lightbox');
   var lightboxImg = document.getElementById('lightboxImg');
