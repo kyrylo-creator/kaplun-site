@@ -1,0 +1,20 @@
+---
+# Генерує /reviews.json з усіх відгуків (колекція "review").
+# Цей файл чіпати не треба — відгуки додаються через адмінку /admin.
+# script.js підвантажує цей JSON і показує відгуки на сторінці потрібної мови.
+permalink: /reviews.json
+eleventyExcludeFromCollections: true
+---
+[
+{%- for r in collections.review %}
+  {
+    "lang": {{ (r.data.lang or "uk") | dump | safe }},
+    "visible": {{ (r.data.visible | default(true)) | dump | safe }},
+    "author": {{ (r.data.author or "") | dump | safe }},
+    "role": {{ (r.data.role or "") | dump | safe }},
+    "source": {{ (r.data.source or "") | dump | safe }},
+    "url": {{ (r.data.url or "") | dump | safe }},
+    "text": {{ (r.data.text or "") | dump | safe }}
+  }{% if not loop.last %},{% endif %}
+{%- endfor %}
+]

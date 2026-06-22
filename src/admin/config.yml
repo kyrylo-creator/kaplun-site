@@ -42,3 +42,30 @@ collections:
       - { label: "Короткий опис (для картки та SEO)", name: "excerpt", widget: "text" }
       - { label: "Опис для пошуковиків (необов'язково)", name: "description", widget: "text", required: false }
       - { label: "Текст статті", name: "body", widget: "markdown" }
+
+  - name: "reviews"
+    label: "Відгуки"
+    label_singular: "Відгук"
+    folder: "src/reviews"
+    create: true
+    identifier_field: "author"
+    slug: "{{fields.lang}}-{{slug}}-{{year}}{{month}}{{day}}{{hour}}{{minute}}"
+    summary: "[{{lang}}] {{author}}"
+    sortable_fields: ["date", "author"]
+    fields:
+      - label: "Мова сторінки"
+        name: "lang"
+        widget: "select"
+        default: "uk"
+        hint: "Відгук з'явиться на сторінці обраної мови (UK / EN / RU). Для іншої мови — створи окремий відгук."
+        options:
+          - { label: "Українська", value: "uk" }
+          - { label: "English",    value: "en" }
+          - { label: "Русский",    value: "ru" }
+      - { label: "Автор", name: "author", widget: "string", hint: "Імʼя або підпис, напр. «Олена» чи «Колега-психолог»" }
+      - { label: "Хто це (необовʼязково)", name: "role", widget: "string", required: false, hint: "напр. «Клієнтка» або «Колега»" }
+      - { label: "Текст відгуку", name: "text", widget: "text" }
+      - { label: "Джерело (необовʼязково)", name: "source", widget: "string", required: false, hint: "звідки відгук, напр. «Treatfield»" }
+      - { label: "Посилання на джерело (необовʼязково)", name: "url", widget: "string", required: false, hint: "повний URL, напр. https://..." }
+      - { label: "Дата", name: "date", widget: "datetime", date_format: "DD.MM.YYYY", time_format: false, format: "YYYY-MM-DD" }
+      - { label: "Показувати на сайті", name: "visible", widget: "boolean", default: true, hint: "Вимкни, щоб тимчасово прибрати відгук, не видаляючи його." }

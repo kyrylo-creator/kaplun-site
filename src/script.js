@@ -169,4 +169,62 @@ document.addEventListener('DOMContentLoaded', function () {
     });
   }
 
+  /* --- Відгуки: підвантаження з /reviews.json і рендер у секцію --- */
+  var reviewsGrid = document.getElementById('reviewsGrid');
+  if (reviewsGrid) {
+    var pageLang = document.documentElement.lang || 'uk';
+
+    fetch('/reviews.json')
+      .then(function (res) { return res.ok ? res.json() : []; })
+      .then(function (list) {
+        var items = (list || []).filter(function (r) {
+          return (r.lang || 'uk') === pageLang
+            && r.visible !== false
+            && (r.text || '').trim();
+        });
+        if (!items.length) return;
+
+        var frag = document.createDocumentFragment();
+        items.forEach(function (r) {
+          var card = document.createElement('div');
+          card.className = 'quote';
+
+          var text = document.createElement('p');
+          text.textContent = r.text;
+          card.appendChild(text);
+
+          var who = document.createElement('div');
+          who.className = 'who';
+          var name = r.author || '';
+          if (r.role) name += (name ? ' · ' : '') + r.role;
+          who.textContent = name;
+
+          if (r.source) {
+            who.appendChild(document.createTextNode(' — '));
+            var src = document.createElement('span');
+            src.className = 'quote__src';
+            if (r.url) {
+              var a = document.createElement('a');
+              a.href = r.url;
+              a.target = '_blank';
+              a.rel = 'noopener';
+              a.textContent = r.source;
+              src.appendChild(a);
+            } else {
+              src.textContent = r.source;
+            }
+            who.appendChild(src);
+          }
+
+          card.appendChild(who);
+          frag.appendChild(card);
+        });
+
+        reviewsGrid.appendChild(frag);
+        var section = document.getElementById('reviews');
+        if (section) section.hidden = false;
+      })
+      .catch(function () { /* тихо ігноруємо — секція лишається прихованою */ });
+  }
+
 });

@@ -317,6 +317,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; mar
 .quote::before { content: "\201C"; font-family: var(--serif); font-size: 4rem; color: var(--forest-2); opacity: .35; position: absolute; top: 6px; left: 18px; line-height: 1; }
 .quote p { margin: 18px 0 14px; font-style: italic; color: #423f35; }
 .quote .who { font-weight: 600; font-size: .9rem; color: var(--forest); }
+.quote__src { font-weight: 500; color: var(--muted); }
+.quote__src a { color: var(--muted); }
+.quote__src a:hover { color: var(--gold); }
 
 /* --------------------- Footer --------------------- */
 .footer { background: var(--forest); color: #e8ecdf; padding: 48px 0 32px; }
