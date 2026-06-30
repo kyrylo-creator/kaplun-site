@@ -105,7 +105,9 @@ h1, h2, h3 { font-family: var(--serif); font-weight: 700; line-height: 1.15; mar
 .lang-switch__cur { color: var(--forest) !important; background: rgba(76,99,80,.08); }
 
 /* --------------------- Hero --------------------- */
-.hero { padding: 72px 0 64px; }
+/* Лише вертикальні відступи — бічні 24px лишаються від .container,
+   щоб hero мав такий самий відступ від краю, як решта секцій (важливо для мобільної версії). */
+.hero { padding-top: 72px; padding-bottom: 64px; }
 .hero__grid { display: grid; grid-template-columns: 1.15fr .85fr; gap: 56px; align-items: center; }
 .hero__name { font-size: clamp(2.4rem, 6vw, 4rem); margin-bottom: 10px; }
 .hero__role { font-family: var(--sans); text-transform: uppercase; letter-spacing: .2em; font-size: .9rem; font-weight: 700; color: var(--forest); margin: 0 0 6px; }
