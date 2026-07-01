@@ -2,6 +2,9 @@
   command = "npm run build"
   publish = "_site"
   functions = "netlify/functions"
+  # Не збирати сайт на кожне збереження контенту (відгук/стаття) в /admin.
+  # Логіка — у scripts/ignore-build.sh (див. коментарі там).
+  ignore = "bash scripts/ignore-build.sh"
 
 [build.environment]
   NODE_VERSION = "20"

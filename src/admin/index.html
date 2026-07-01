@@ -9,5 +9,73 @@
 <body>
   <!-- Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!-- Кнопка «Опублікувати зміни на сайт».
+       Запускає ОДНУ збірку сайту з усіма збереженими відгуками/змінами
+       (через функцію /.netlify/functions/trigger-build → Netlify Build Hook).
+       Потрібна, бо збереження відгуку більше не запускає білд автоматично. -->
+  <script>
+    (function () {
+      // Дістаємо GitHub-токен, який Decap зберігає в localStorage після входу.
+      function getToken() {
+        for (var i = 0; i < localStorage.length; i++) {
+          var k = localStorage.key(i);
+          if (!k || k.indexOf("-cms-user") === -1) continue;
+          try {
+            var u = JSON.parse(localStorage.getItem(k));
+            if (u && u.token) return u.token;
+          } catch (e) {}
+        }
+        return null;
+      }
+
+      var btn = document.createElement("button");
+      btn.type = "button";
+      var LABEL = "🚀 Опублікувати зміни на сайт";
+      btn.textContent = LABEL;
+      btn.style.cssText =
+        "position:fixed;right:16px;bottom:16px;z-index:99999;" +
+        "padding:12px 18px;border:0;border-radius:10px;cursor:pointer;" +
+        "background:#3b6b4f;color:#fff;font:600 14px/1.2 system-ui,sans-serif;" +
+        "box-shadow:0 4px 14px rgba(0,0,0,.2)";
+
+      var busy = false;
+      function reset(msg) {
+        busy = false;
+        btn.disabled = false;
+        btn.textContent = msg || LABEL;
+      }
+
+      btn.addEventListener("click", function () {
+        if (busy) return;
+        var token = getToken();
+        if (!token) {
+          btn.textContent = "Спершу увійдіть у CMS";
+          setTimeout(function () { btn.textContent = LABEL; }, 3000);
+          return;
+        }
+        busy = true;
+        btn.disabled = true;
+        btn.textContent = "⏳ Запускаю збірку…";
+        fetch("/.netlify/functions/trigger-build", {
+          method: "POST",
+          headers: { Authorization: "token " + token },
+        })
+          .then(function (r) {
+            if (r.ok) {
+              btn.textContent = "✅ Збірку запущено — сайт оновиться за ~1–2 хв";
+              setTimeout(function () { reset(); }, 8000);
+            } else {
+              reset("⚠️ Помилка — спробуйте ще раз");
+            }
+          })
+          .catch(function () {
+            reset("⚠️ Помилка мережі");
+          });
+      });
+
+      document.body.appendChild(btn);
+    })();
+  </script>
 </body>
 </html>
