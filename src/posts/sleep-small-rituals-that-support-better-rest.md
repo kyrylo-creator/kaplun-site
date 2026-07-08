@@ -2,7 +2,7 @@
 lang: en
 title: "Sleep: Small Rituals That Support Better Rest"
 date: 2026-07-08
-category: "Sleep: Small Rituals That Support Better Rest"
+category: Sleep
 excerpt: "Sleep: Small Rituals That Support Better Rest. Create an Evening
   Atmosphere. Reduce Screen Time Before Bed. Give Your Body Time to Rest.
   Develop a Personal Evening Ritual. Consistency Matters More Than Perfection"
