@@ -2,7 +2,7 @@
 lang: en
 title: "Consistency Matters More Than Motivation: Building Habits That Last"
 date: 2026-07-02
-category: Consistency Matters More Than Motivation
+category: Changes
 excerpt: Why Motivation Isn't Enough? Building Sustainable Habits. Sometimes the
   problem isn't a lack of willpower. Finding Your Own Rhythm
 description: Why Motivation Isn't Enough? Building Sustainable Habits. Sometimes
