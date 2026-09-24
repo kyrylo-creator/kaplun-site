@@ -2,7 +2,7 @@
 lang: en
 title: "Attention and Gadgets: What Is Happening to Our Ability to Concentrate?"
 date: 2026-09-24
-category: "Attention and Gadgets: What Is Happening to Our Ability to Concentrate?"
+category: digital hygiene
 excerpt: "Attention and Gadgets: How Phones and Short Videos Affect Concentration"
 description: How do smartphones and short-form videos affect attention and
   concentration? Learn about digital habits, ADHD, self-regulation and practical
