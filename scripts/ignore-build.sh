@@ -18,6 +18,13 @@ if [ -n "$INCOMING_HOOK_TITLE" ]; then
   exit 1
 fi
 
+# Без кешу Netlify підставляє CACHED_COMMIT_REF = COMMIT_REF — тоді порівнювати
+# нема з чим (diff завжди порожній), тож збираємо, щоб не пропустити зміни коду.
+if [ -z "$CACHED_COMMIT_REF" ] || [ "$CACHED_COMMIT_REF" = "$COMMIT_REF" ]; then
+  echo "Немає попереднього зібраного комміту (кеш порожній) → збираємо."
+  exit 1
+fi
+
 # 2/3) Порівнюємо попередньо зібраний комміт із поточним, ігноруючи контент CMS.
 # git diff --quiet: код 0 = різниці немає, код 1 = різниця є.
 if git diff --quiet "$CACHED_COMMIT_REF" "$COMMIT_REF" -- . ':(exclude)src/reviews' ':(exclude)src/posts'; then
